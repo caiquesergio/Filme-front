@@ -1,5 +1,6 @@
-
 import axios from 'axios';
+
+const endPoint =  `http://localhost:3001/auth/`;
 
 class AppLogic {
    static getFilm(name){
@@ -10,6 +11,22 @@ class AppLogic {
     .catch(err => {
       console.log(err);
     });
+  }
+
+   static async postRegister(user){
+    try{
+     return await axios.post(endPoint+'/register', user)
+    }catch(err){
+      return err;
+    }
+  }
+
+  static async postAuth(user){
+    try{
+      return await axios.post(endPoint+'/authenticate', user)
+    }catch(err){
+      return err;
+    }
   }
 }
 
